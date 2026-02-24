@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2e7d32" />
+    <title>Comida de Quintal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="phone-frame prestart">
+        <header class="phone-notch"></header>
+
+        <!-- Tela de início obrigatória -->
+        <section class="screen active" id="start-screen" data-screen>
+          <div class="screen-header start-header">
+            <p class="location-pill">🌿 Plataforma local e sustentável</p>
+            <h1>Comida de Quintal</h1>
+            <p class="subtitle">Antes de iniciar, escolha seu perfil</p>
+          </div>
+
+          <div class="profile-grid start-grid">
+            <button class="card profile-card start-role" data-start-role="consumer">
+              <span class="emoji" aria-hidden="true">🧺</span>
+              <strong>Sou Consumidor</strong>
+              <p>Quero comprar alimentos frescos e acessíveis</p>
+            </button>
+
+            <button class="card profile-card start-role" data-start-role="producer">
+              <span class="emoji" aria-hidden="true">🧑‍🌾</span>
+              <strong>Sou Produtor</strong>
+              <p>Quero cadastrar e vender minha produção local</p>
+            </button>
+          </div>
+        </section>
+
+        <!-- Tela inicial -->
+        <section class="screen" id="home-screen" data-screen>
+          <div class="screen-header">
+            <p class="location-pill">📍 Região Centro - 500m</p>
+            <h1>Comida de Quintal</h1>
+            <p class="subtitle">Comida natural perto de você</p>
+          </div>
+
+          <div class="search-box">
+            <span aria-hidden="true">🔎</span>
+            <input id="home-search" type="text" placeholder="Buscar frutas, verduras ou produtor..." />
+          </div>
+
+          <section class="stats-grid" aria-label="Indicadores da plataforma">
+            <article class="card stat-card">
+              <p>Produtores ativos</p>
+              <strong>24</strong>
+            </article>
+            <article class="card stat-card">
+              <p>Entrega média</p>
+              <strong>35 min</strong>
+            </article>
+            <article class="card stat-card">
+              <p>Economia média</p>
+              <strong>18%</strong>
+            </article>
+          </section>
+
+          <section class="card map-card" aria-label="Mini mapa de residências produtoras">
+            <div class="map-title">
+              <h2 class="section-title">Mini mapa local</h2>
+              <small>Simulação visual</small>
+            </div>
+            <div class="mini-map">
+              <span class="pin pin-ana" title="Quintal da Dona Ana">📍</span>
+              <span class="pin pin-terra" title="Sítio Boa Terra">📍</span>
+              <span class="pin pin-joao" title="Horta do Seu João">📍</span>
+            </div>
+            <div class="map-legend">
+              <p>📍 Quintal da Dona Ana — 500m</p>
+              <p>📍 Sítio Boa Terra — 1,2 km</p>
+              <p>📍 Horta do Seu João — 900m</p>
+            </div>
+          </section>
+
+          <h2 class="section-title">Produtores próximos</h2>
+          <div class="list" id="producers-list">
+            <article class="card producer-card" data-producer="quintal da dona ana frutas hortaliças 500m">
+              <div>
+                <h3>Quintal da Dona Ana</h3>
+                <p>Frutas e hortaliças</p>
+              </div>
+              <div class="card-meta">
+                <p>A partir de R$ 4,00</p>
+                <small>500m</small>
+              </div>
+            </article>
+
+            <article class="card producer-card" data-producer="sítio boa terra verduras frescas 1,2 km">
+              <div>
+                <h3>Sítio Boa Terra</h3>
+                <p>Verduras frescas</p>
+              </div>
+              <div class="card-meta">
+                <p>A partir de R$ 6,50</p>
+                <small>1,2 km</small>
+              </div>
+            </article>
+
+            <article class="card producer-card" data-producer="horta do seu joão temperos legumes 900m">
+              <div>
+                <h3>Horta do Seu João</h3>
+                <p>Temperos e legumes</p>
+              </div>
+              <div class="card-meta">
+                <p>A partir de R$ 3,50</p>
+                <small>900m</small>
+              </div>
+            </article>
+          </div>
+          <p id="home-empty" class="muted hidden">Nenhum produtor encontrado para essa busca.</p>
+
+          <div class="actions">
+            <button class="btn primary" data-go="profile-screen">Comprar como Consumidor</button>
+            <button class="btn secondary" data-go="profile-screen">Vender Produção</button>
+          </div>
+        </section>
+
+        <!-- Tela de escolha de perfil -->
+        <section class="screen" id="profile-screen" data-screen>
+          <div class="screen-header compact">
+            <button class="icon-btn" data-go="home-screen" aria-label="Voltar">←</button>
+            <h2>Escolha seu perfil</h2>
+            <p class="subtitle">Como você quer usar o app hoje?</p>
+          </div>
+
+          <div class="profile-grid">
+            <button class="card profile-card" data-go="consumer-screen">
+              <span class="emoji" aria-hidden="true">🧺</span>
+              <strong>Sou Consumidor</strong>
+              <p>Quero comprar alimentos frescos</p>
+            </button>
+
+            <button class="card profile-card" data-go="producer-screen">
+              <span class="emoji" aria-hidden="true">🧑‍🌾</span>
+              <strong>Sou Produtor</strong>
+              <p>Quero vender minha produção</p>
+            </button>
+          </div>
+        </section>
+
+        <!-- Tela consumidor -->
+        <section class="screen" id="consumer-screen" data-screen>
+          <div class="screen-header compact">
+            <button class="icon-btn" data-go="profile-screen" aria-label="Voltar">←</button>
+            <h2>Produtos disponíveis</h2>
+            <p class="subtitle">Feitos por produtores locais</p>
+          </div>
+
+          <div class="search-box slim">
+            <span aria-hidden="true">🔎</span>
+            <input id="consumer-search" type="text" placeholder="Buscar produto ou produtor..." />
+          </div>
+
+          <div class="list" id="consumer-products">
+            <article class="card product-card" data-product="alface orgânica horta do seu joão">
+              <div>
+                <h3>Alface orgânica</h3>
+                <p>Horta do Seu João</p>
+              </div>
+              <div class="product-right">
+                <strong>R$ 4,00</strong>
+                <button class="btn mini" data-add-cart data-name="Alface orgânica" data-price="4">Adicionar</button>
+              </div>
+            </article>
+
+            <article class="card product-card" data-product="tomate cereja sítio boa terra">
+              <div>
+                <h3>Tomate cereja (500g)</h3>
+                <p>Sítio Boa Terra</p>
+              </div>
+              <div class="product-right">
+                <strong>R$ 8,50</strong>
+                <button class="btn mini" data-add-cart data-name="Tomate cereja" data-price="8.5">Adicionar</button>
+              </div>
+            </article>
+
+            <article class="card product-card" data-product="banana prata quintal da dona ana">
+              <div>
+                <h3>Banana prata (dúzia)</h3>
+                <p>Quintal da Dona Ana</p>
+              </div>
+              <div class="product-right">
+                <strong>R$ 9,00</strong>
+                <button class="btn mini" data-add-cart data-name="Banana prata" data-price="9">Adicionar</button>
+              </div>
+            </article>
+          </div>
+          <p id="consumer-empty" class="muted hidden">Nenhum produto encontrado para essa busca.</p>
+
+          <section class="cart card" aria-live="polite">
+            <h3>🛒 Carrinho</h3>
+            <p>Itens: <span id="cart-count">0</span></p>
+            <p>Total: <strong id="cart-total">R$ 0,00</strong></p>
+            <p class="muted">Entrega estimada: 35 a 50 min</p>
+            <button class="btn mini" data-go="cart-screen">Ver carrinho</button>
+          </section>
+        </section>
+
+        <!-- Tela carrinho -->
+        <section class="screen" id="cart-screen" data-screen>
+          <div class="screen-header compact">
+            <button class="icon-btn" data-go="consumer-screen" aria-label="Voltar">←</button>
+            <h2>Seu carrinho</h2>
+            <p class="subtitle">Confira os itens antes de finalizar</p>
+          </div>
+
+          <section class="card cart-detail" aria-live="polite">
+            <div class="cart-summary-row">
+              <p>Itens no carrinho</p>
+              <strong id="cart-screen-count">0</strong>
+            </div>
+            <div class="cart-summary-row">
+              <p>Total</p>
+              <strong id="cart-screen-total">R$ 0,00</strong>
+            </div>
+          </section>
+
+          <section class="list" id="cart-items-list">
+            <article class="card">
+              <p class="muted">Seu carrinho está vazio. Adicione itens na tela de produtos.</p>
+            </article>
+          </section>
+
+          <div class="actions">
+            <button class="btn secondary" id="clear-cart-btn" type="button">Limpar carrinho</button>
+            <button class="btn primary" id="checkout-btn" type="button">Finalizar compra (simulação)</button>
+          </div>
+        </section>
+
+        <!-- Tela produtor -->
+        <section class="screen" id="producer-screen" data-screen>
+          <div class="screen-header compact">
+            <button class="icon-btn" data-go="profile-screen" aria-label="Voltar">←</button>
+            <h2>Painel do produtor</h2>
+            <p class="subtitle">Cadastre seus produtos para vender</p>
+          </div>
+
+          <form id="producer-form" class="card producer-form">
+            <label>
+              Nome do produto
+              <input type="text" id="prod-name" required placeholder="Ex: Couve fresca" />
+            </label>
+
+            <label>
+              Preço (R$)
+              <input type="number" id="prod-price" min="0" step="0.01" required placeholder="Ex: 5.90" />
+            </label>
+
+            <label>
+              Quantidade
+              <input type="number" id="prod-qty" min="1" required placeholder="Ex: 10" />
+            </label>
+
+            <button type="submit" class="btn primary">Adicionar produto</button>
+          </form>
+
+          <section class="list" id="producer-list" aria-live="polite">
+            <article class="card">
+              <h3>Seus produtos cadastrados</h3>
+              <p class="muted">Adicione produtos para que consumidores encontrem sua produção local.</p>
+            </article>
+          </section>
+        </section>
+
+        <nav class="tab-bar" aria-label="Navegação principal">
+          <button class="tab-btn active" data-go="home-screen" data-tab="home-screen" aria-label="Início">
+            <span aria-hidden="true">🏠</span>
+            <small>Início</small>
+          </button>
+          <button class="tab-btn" data-go="profile-screen" data-tab="profile-screen" aria-label="Perfil">
+            <span aria-hidden="true">👤</span>
+            <small>Perfil</small>
+          </button>
+          <button class="tab-btn" data-go="consumer-screen" data-tab="consumer-screen" aria-label="Comprar">
+            <span aria-hidden="true">🛒</span>
+            <small>Comprar</small>
+            <span class="tab-badge hidden" id="tab-cart-badge">0</span>
+          </button>
+          <button class="tab-btn" data-go="producer-screen" data-tab="producer-screen" aria-label="Vender">
+            <span aria-hidden="true">🌱</span>
+            <small>Vender</small>
+          </button>
+        </nav>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
